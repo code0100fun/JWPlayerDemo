@@ -11,43 +11,55 @@ import {
   Text,
   View
 } from 'react-native';
+import JWPlayer from './components/JWPlayer';
 
 class JWPlayerDemo extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <JWPlayer
+          style={styles.player}
+          autostart={true}
+          file={'https://content.jwplatform.com/manifests/vM7nH0Kl.m3u8'}
+          onBeforePlay={this._onBeforePlay.bind(this)}
+          onPlay={this._onPlay.bind(this)}
+          onPlayerError={this._onPlayerError.bind(this)}
+          onBuffer={this._onBuffer.bind(this)}
+          onTime={this._onTime.bind(this)}
+        />
       </View>
     );
+  }
+
+  _onBeforePlay() {
+
+  }
+
+  _onPlay() {
+
+  }
+
+  _onPlayerError(error) {
+
+  }
+
+  _onBuffer() {
+
+  }
+
+  _onTime({ position, duration }) {
+
   }
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'transparent',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  player: {
+    flex: 1,
+  }
 });
 
 AppRegistry.registerComponent('JWPlayerDemo', () => JWPlayerDemo);
